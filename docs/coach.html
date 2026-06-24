@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agentic-SE Coach — assessing team supervision on the SSM</title>
+  <meta name="description" content="The Agentic-SE Coach: a review website that scores semester-long team software projects on the Supervision Skill Model from git history, with multi-committer review. Part of the Agent Supervisor education project at CWRU." />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="affil">
+    <div class="wrap">
+      <span>Case Western Reserve University &middot; Department of Computer &amp; Data Sciences</span>
+      <span>Principal investigator: <a href="https://github.com/sumonbis">Sumon Biswas</a></span>
+    </div>
+  </div>
+
+  <header class="nav">
+    <div class="wrap">
+      <span class="brand"><a href="./" style="color:inherit">Agent Supervisor</a></span>
+      <nav>
+        <a href="./#overview">Overview</a>
+        <a href="./#modules">Modules</a>
+        <a href="./agentlens/">AgentLens</a>
+        <a href="./coach/">Live demo</a>
+        <a href="https://github.com/sumonbis/agent-supervisor">Code</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="border-top:none">
+      <div class="wrap kept">
+        <div class="eyebrow">Module 2 &middot; for instructors</div>
+        <h1>Agentic-SE Coach</h1>
+        <p class="lead">
+          A review website that turns a whole class&rsquo;s repositories into a weekly supervision assessment. It scores
+          team projects on the <b>Supervision Skill Model</b> directly from git history, makes the
+          <b>automation-complacency signature</b> visible, and supports fair <b>multi-committer review</b>.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="./coach/">Open the live review site &rarr;</a>
+          <a class="btn" href="./coach/#/p/P08">Jump to a complacency case</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT IT MEASURES -->
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="label">What it measures</div>
+          <h2>Two SSM skills, computed from the repository</h2>
+          <p>Verification and workflow are derivable from git without running code or a model. The remaining four skills are reserved for an optional instructor LLM pass and are shown as pending.</p>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Skill</th><th>Evidence used</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td><b>S3 &mdash; Verify</b></td><td>test-to-implementation ratio; test-first commit patterns</td><td class="src">git history</td></tr>
+            <tr><td><b>S6 &mdash; Orchestrate</b></td><td>commit cadence, churn, workflow structure across the term</td><td class="src">git history</td></tr>
+            <tr><td>S1 / S2 / S4 / S5</td><td>direction, approval, critique, ownership</td><td class="src prog">pending LLM pass</td></tr>
+            <tr><td><b>AI-tool usage</b></td><td>14 explicit, behavioral, and temporal signals</td><td class="src">commits, files, code</td></tr>
+          </tbody>
+        </table>
+        <p class="muted" style="font-size:13.5px;margin-top:12px">S3 and S6 reproduce the scores of a validated reference tool, checked against 18 real student repositories.</p>
+      </div>
+    </section>
+
+    <!-- THE SIGNATURE -->
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="label">The teaching signal</div>
+          <h2>Automation complacency, made visible</h2>
+          <p>When organized workflow (S6) runs persistently ahead of verification (S3), the team is leaning on the agent faster than it is checking the agent. The weekly trajectory shades that gap so an instructor can see exactly when it opened.</p>
+        </div>
+        <div class="gallery">
+          <div class="shot"><a href="./coach/#/p/P08"><img src="./assets/coach-timeline.png" alt="Weekly S3-vs-S6 trajectory with the automation-complacency gap shaded" /></a><div class="cap">Weekly S3-vs-S6 trajectory &mdash; the shaded S6 &gt; S3 gap</div></div>
+          <div class="shot"><a href="./coach/#/p/P11/team"><img src="./assets/coach-committers.png" alt="Multi-committer review table with contribution shares and a free-rider flag" /></a><div class="cap">Multi-committer review &mdash; shares, free-rider / dumper flags</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MULTI-COMMITTER -->
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="label">Fair team review</div>
+          <h2>See who actually supervised</h2>
+          <p>The review site separates each committer&rsquo;s contribution and supervision, so a team grade need not hide a free rider or a &ldquo;code dumper&rdquo; who added a lot of unverified code.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="n">1</div><h4>Class at a glance</h4><p>Projects sorted by review priority, with complacency badges and contribution-balance bars.</p></div>
+          <div class="step"><div class="n">2</div><h4>Per team</h4><p>The weekly trajectory, a six-axis SSM snapshot, and week-over-week change.</p></div>
+          <div class="step"><div class="n">3</div><h4>Per committer</h4><p>Contribution share, tests authored, and a per-person supervision scorecard.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IN PROGRESS: student extension -->
+    <section id="inprogress">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="label">In development</div>
+          <h2>A student VS Code extension</h2>
+        </div>
+        <div class="note">
+          <b>Coach for the student IDE (in progress).</b> A companion VS Code extension lets students push an
+          <b>abstracted supervision snapshot</b> from their own editor into the class review site &mdash; computed
+          locally with the same analysis core, carrying only scores and signal counts (no source, file paths, emails,
+          commit hashes, or identities). This closes the loop between the student&rsquo;s workflow and the instructor&rsquo;s
+          review, and is part of the project&rsquo;s ongoing education research. An early prototype exists; the workflow is
+          not yet finalized.
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACY -->
+    <section>
+      <div class="wrap">
+        <div class="note privacy">
+          <b>Data &amp; privacy.</b> The public demo is generated from 18 real student team projects studied under
+          <b>IRB approval</b>. The dataset is anonymized at generation time &mdash; only scores, counts, and signal flags
+          are emitted (Committer A / Project NN). No source code, file paths, emails, commit SHAs, or real identities are
+          ever published, and the source repositories are not included.
+        </div>
+        <div class="cta-row" style="margin-top:20px">
+          <a class="btn btn--primary" href="./coach/">Open the live review site &rarr;</a>
+          <a class="btn" href="https://github.com/sumonbis/agent-supervisor/blob/main/apps/coach/README.md">Coach documentation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span class="inst">Department of Computer &amp; Data Sciences, Case Western Reserve University &middot; Sumon Biswas &middot; MIT licensed</span>
+      <span><a href="./">&larr; Project overview</a></span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -32,12 +32,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sumonbis/agentsafe"
+    "url": "https://github.com/sumonbis/agent-supervisor"
   },
   "bugs": {
-    "url": "https://github.com/sumonbis/agentsafe/issues"
+    "url": "https://github.com/sumonbis/agent-supervisor/issues"
   },
-  "homepage": "https://github.com/sumonbis/agentsafe#readme",
+  "homepage": "https://sumonbis.github.io/agent-supervisor/",
   "main": "./dist/extension.js",
   "activationEvents": [],
   "contributes": {

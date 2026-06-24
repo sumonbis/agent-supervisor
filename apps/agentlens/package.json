@@ -1,5 +1,5 @@
 {
-  "name": "agentlens",
+  "name": "agentlens-supervisor",
   "displayName": "AgentLens — See What AI Agents Really Do",
   "description": "A lens into AI coding agents. Click through what an agent actually did — under the hood — spot the unsafe steps, and learn to calibrate your trust. Explore sample runs or import a real one. For CS and non-CS students alike.",
   "version": "0.1.0",

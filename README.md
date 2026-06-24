@@ -10,7 +10,7 @@ AI agents plan, edit files, run commands, and report "done" on their own. The ne
 
 | Component | What it is | Status | Try it |
 |---|---|---|---|
-| **[AgentLens](apps/agentlens)** | VS Code extension (+ no-install browser demo) to read an agent's trace step by step, reveal the under-the-hood details and safety verdicts, and calibrate trust. For CS **and** non-CS students. | ✅ Live | [Browser demo](https://sumonbis.github.io/agent-supervisor/agentlens/) · [.vsix](docs/downloads/agentlens-0.1.0.vsix) |
+| **[AgentLens](apps/agentlens)** | VS Code extension (+ no-install browser demo) to read an agent's trace step by step, reveal the under-the-hood details and safety verdicts, and calibrate trust. For CS **and** non-CS students. | ✅ Live | [Marketplace](https://marketplace.visualstudio.com/items?itemName=sumonbis.agentlens-supervisor) · [Browser demo](https://sumonbis.github.io/agent-supervisor/agentlens/) |
 | **[Agentic-SE Coach — web](apps/coach)** | A git-like review website that scores a whole class's repos on the SSM each week (S3 Verify + S6 Orchestrate from git history), surfaces the automation-complacency signature, and supports multi-committer review. | ✅ Live | [Review site](https://sumonbis.github.io/agent-supervisor/coach/) |
 | **Agentic-SE Coach — VS Code** | Push abstracted supervision snapshots from the IDE straight into the review site. | 🟡 Proposed (CAREER) — early prototype exists | — |
 | **[@agentsafe/core](packages/core)** | The shared TypeScript library: SSM model, trust-calibration scoring, safety-aware trace schema, reference oracles, git analyzers (S3/S6), and the 14-signal AI-usage detector. | ✅ Core | 35 tests |

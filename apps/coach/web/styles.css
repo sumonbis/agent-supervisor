@@ -1,21 +1,21 @@
 :root {
-  --bg: #14141a;
-  --surface: #1c1c24;
-  --surface-2: #24242e;
-  --border: #2f2f3a;
-  --border-strong: #43434f;
-  --fg: #e8e8ec;
-  --muted: #9aa0ab;
-  --accent-1: #6d6dfb;
-  --accent-2: #28c4bd;
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f1f3f8;
+  --border: #e4e7ee;
+  --border-strong: #cfd5e0;
+  --fg: #1b2230;
+  --muted: #5a6675;
+  --accent-1: #4a57d6;
+  --accent-2: #0f9c91;
   --accent: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-  /* SSM level colors */
-  --l0: #d9534f;
-  --l1: #e0a623;
-  --l2: #3aa0c9;
-  --l3: #3fb950;
-  --na: #6b6b76;
-  --danger: #f85149;
+  /* SSM level colors (tuned for contrast on a light background) */
+  --l0: #cf3a36;
+  --l1: #b9810a;
+  --l2: #2f86b0;
+  --l3: #1f9d46;
+  --na: #98a0ae;
+  --danger: #d23b46;
   --radius: 12px;
   --radius-sm: 8px;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;

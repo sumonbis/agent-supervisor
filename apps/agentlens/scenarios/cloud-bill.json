@@ -1,0 +1,76 @@
+{
+  "id": "cloud-bill",
+  "title": "The Surprise Cloud Bill",
+  "tagline": "Deploy a hobby site. Wake up to an $840/month invoice.",
+  "task": "Deploy my little website so my friends can visit it.",
+  "agent": "Deployment Agent",
+  "domain": "Your weekend hobby site",
+  "difficulty": "core",
+  "focus": [
+    "cost",
+    "approval"
+  ],
+  "estMinutes": 5,
+  "steps": [
+    {
+      "id": 1,
+      "title": "The agent proposes an architecture",
+      "agentSays": "To deploy this reliably, I'll provision a high-availability setup: a 5-node Kubernetes cluster, a load balancer, and a premium managed database. Estimated cost: about $840/month.",
+      "whatHappened": "For a static personal site with a handful of visitors, this is wildly over-provisioned. A free or near-free static host would do exactly the same job.",
+      "tool": "plan",
+      "command": "terraform plan (cluster + LB + premium DB)",
+      "code": {
+        "filename": "deploy-plan.txt",
+        "language": "text",
+        "text": "Resources to create:\n  + kubernetes_cluster   (5 nodes)        ~ $610/mo\n  + load_balancer                        ~ $90/mo\n  + managed_db (premium tier)            ~ $140/mo\n  ------------------------------------------------\n  Estimated total                        ~ $840/mo"
+      },
+      "risk": "danger",
+      "gate": "block",
+      "explain": "The agent optimized for 'reliable and scalable' — not for 'a hobby site on a student budget'. It never weighed the cost against the actual need. Spending commitments deserve explicit human approval.",
+      "decision": {
+        "prompt": "The agent is ready to provision $840/month of infrastructure. What do you do?",
+        "kind": "approve",
+        "options": [
+          {
+            "id": "approve",
+            "label": "Approve — it said this is the reliable way",
+            "feedback": "You just signed up for $10,000/year to host a page your friends visit. 'Reliable' was never worth this for a hobby site — and the bill is real money.",
+            "outcome": "bad"
+          },
+          {
+            "id": "cheaper",
+            "label": "Reject and ask for the cheapest option that meets the need",
+            "feedback": "Correct. You scoped to the real requirement. The agent comes back with free static hosting — same result for visitors, ~$0/month.",
+            "outcome": "good"
+          },
+          {
+            "id": "warn",
+            "label": "Let it proceed but set a billing alert",
+            "feedback": "A billing alert tells you AFTER you've been charged. The resources still get created. Approve the spend up front, don't just watch it happen.",
+            "outcome": "risky"
+          }
+        ],
+        "correct": "cheaper"
+      }
+    },
+    {
+      "id": 2,
+      "title": "The right-sized deploy",
+      "agentSays": "Understood — deploying as a static site to a free tier. It's live at your-site.example. Monthly cost: $0.",
+      "whatHappened": "Same outcome for your visitors, at no cost. You approved the spending decision deliberately instead of letting the agent commit your money.",
+      "tool": "deploy",
+      "command": "deploy --static --free-tier",
+      "risk": "safe",
+      "explain": "Resource and money decisions are a blast radius too. A supervisor approves cost commitments the same way they approve destructive actions — explicitly, before they happen."
+    }
+  ],
+  "debrief": {
+    "summary": "The agent reached for an enterprise-grade, $840/month architecture to host a hobby site. Supervision means approving spending and resource commitments deliberately — the cheapest option that meets the real need, not the most impressive one.",
+    "lessons": [
+      "Money and resource provisioning are a blast radius: approve them explicitly, before execution.",
+      "Agents optimize the goal you stated ('reliable'), not the constraint you didn't ('basically free').",
+      "A billing alert is detection after the fact; a pre-action approval is prevention."
+    ],
+    "realWorld": "Coding and ops agents have provisioned expensive cloud resources and run up unexpected bills while completing ordinary deploy and 'make it scalable' requests."
+  }
+}

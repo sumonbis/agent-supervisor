@@ -1,0 +1,17 @@
+.vscode/**
+src/**
+out/**
+test/**
+web/**
+scripts/**
+node_modules/**
+.gitignore
+.vscodeignore
+esbuild.js
+tsconfig.json
+**/*.map
+**/*.ts
+.DS_Store
+**/.DS_Store
+images/icon.svg
+*.vsix

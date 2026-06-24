@@ -1,0 +1,152 @@
+{
+  "name": "agentlens",
+  "displayName": "AgentLens — See What AI Agents Really Do",
+  "description": "A lens into AI coding agents. Click through what an agent actually did — under the hood — spot the unsafe steps, and learn to calibrate your trust. Explore sample runs or import a real one. For CS and non-CS students alike.",
+  "version": "0.1.0",
+  "publisher": "sumonbis",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Education",
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "AI",
+    "agents",
+    "education",
+    "trace",
+    "visualization",
+    "trust calibration",
+    "AI safety",
+    "SWE-agent",
+    "copilot",
+    "vibe coding"
+  ],
+  "galleryBanner": {
+    "color": "#0E1726",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sumonbis/agentsafe"
+  },
+  "bugs": {
+    "url": "https://github.com/sumonbis/agentsafe/issues"
+  },
+  "homepage": "https://github.com/sumonbis/agentsafe#readme",
+  "main": "./dist/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      {
+        "command": "agentLens.open",
+        "title": "Open AgentLens",
+        "category": "AgentLens",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "agentLens.importTrace",
+        "title": "Import a Real Agent Run (SWE-agent)…",
+        "category": "AgentLens",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "agentLens.runSweAgent",
+        "title": "Run SWE-agent on This Repository…",
+        "category": "AgentLens"
+      },
+      {
+        "command": "agentLens.resetProgress",
+        "title": "Reset My Progress",
+        "category": "AgentLens"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "agentLens",
+          "title": "AgentLens",
+          "icon": "media/activitybar.svg"
+        }
+      ]
+    },
+    "views": {
+      "agentLens": [
+        {
+          "id": "agentLensScenarios",
+          "name": "Explore"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "agentLensScenarios",
+        "contents": "See what AI coding agents really do — and learn when to trust them.\n[Open AgentLens](command:agentLens.open)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "agentLens.open",
+          "when": "view == agentLensScenarios",
+          "group": "navigation"
+        },
+        {
+          "command": "agentLens.importTrace",
+          "when": "view == agentLensScenarios",
+          "group": "navigation"
+        }
+      ]
+    },
+    "walkthroughs": [
+      {
+        "id": "agentLens.getStarted",
+        "title": "Get Started with AgentLens",
+        "description": "Look under the hood of AI coding agents and learn when to trust them.",
+        "steps": [
+          {
+            "id": "open",
+            "title": "Open AgentLens",
+            "description": "The agent writes the code — your job is to see what it really did.\n[Open AgentLens](command:agentLens.open)",
+            "media": {
+              "markdown": "media/walkthrough/open.md"
+            }
+          },
+          {
+            "id": "play",
+            "title": "Explore your first run",
+            "description": "Watch an AI agent work, open each step to see what really happened, then decide: trust it, or stop it? Each choice sharpens your trust calibration.",
+            "media": {
+              "markdown": "media/walkthrough/play.md"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "node esbuild.js",
+    "package": "node esbuild.js --production",
+    "check-types": "tsc --noEmit",
+    "test": "node --test test/webview.test.mjs",
+    "preview:build": "node preview/build-preview.mjs",
+    "preview": "npm run preview:build && python3 -m http.server 5599 --directory preview",
+    "build:vsix": "vsce package --no-dependencies"
+  },
+  "dependencies": {
+    "@agentsafe/core": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.26.1",
+    "esbuild": "^0.21.5",
+    "jsdom": "^24.1.3",
+    "typescript": "^5.4.5"
+  }
+}

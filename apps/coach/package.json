@@ -1,0 +1,107 @@
+{
+  "name": "agentic-se-coach",
+  "displayName": "Agentic-SE Coach — Supervision Report for Your Team Project",
+  "description": "For software-engineering students building large projects with AI agents in a team, over a semester. Scores your repo on the Supervision Skill Model — verification (S3) and workflow orchestration (S6) from git history, plus AI-tool usage — and produces a report and a hand-in disclosure.",
+  "version": "0.1.0",
+  "publisher": "sumonbis",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Education",
+    "Other"
+  ],
+  "keywords": [
+    "AI",
+    "agents",
+    "software engineering",
+    "supervision",
+    "education",
+    "code review",
+    "git",
+    "assessment"
+  ],
+  "galleryBanner": {
+    "color": "#0E1726",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sumonbis/agentsafe"
+  },
+  "main": "./dist/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      {
+        "command": "agentSafeCoach.analyze",
+        "title": "Analyze This Repository",
+        "category": "Agentic-SE Coach",
+        "icon": "$(graph)"
+      },
+      {
+        "command": "agentSafeCoach.exportReport",
+        "title": "Export Report + Disclosure",
+        "category": "Agentic-SE Coach"
+      },
+      {
+        "command": "agentSafeCoach.pushSnapshot",
+        "title": "Push Supervision Snapshot",
+        "category": "Agentic-SE Coach",
+        "icon": "$(cloud-upload)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "agentSafeCoach",
+          "title": "Agentic-SE Coach",
+          "icon": "media/activitybar.svg"
+        }
+      ]
+    },
+    "views": {
+      "agentSafeCoach": [
+        {
+          "id": "agentSafeCoachView",
+          "name": "Supervision"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "agentSafeCoachView",
+        "contents": "See how well-supervised your agentic SE work is — verification, workflow, and AI-tool usage from your repo.\n[Analyze This Repository](command:agentSafeCoach.analyze)\n[Export Report + Disclosure](command:agentSafeCoach.exportReport)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "agentSafeCoach.analyze",
+          "when": "view == agentSafeCoachView",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "node esbuild.js",
+    "package": "node esbuild.js --production",
+    "check-types": "tsc --noEmit",
+    "test": "node --test test/*.test.mjs",
+    "build:vsix": "vsce package --no-dependencies"
+  },
+  "dependencies": {
+    "@agentsafe/core": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.26.1",
+    "esbuild": "^0.21.5",
+    "typescript": "^5.4.5"
+  }
+}

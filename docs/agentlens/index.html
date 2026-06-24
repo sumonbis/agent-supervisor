@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgentLens — see what AI coding agents really do</title>
+  <link rel="stylesheet" href="./preview.css" />
+  <link rel="stylesheet" href="./cockpit.css" />
+</head>
+<body>
+  <div id="app" class="app"></div>
+  <script>
+    const AREAS = ["S1", "S2", "S3", "S4", "S5", "S6"];
+    function zeroProfile(o) {
+      const areas = {};
+      for (const a of AREAS) areas[a] = { area: a, attempts: 0, correct: 0, accuracy: 0, level: 0 };
+      return Object.assign(
+        { areas, totalDecisions: 0, totalCorrect: 0, accuracy: 0, brier: null, overTrust: 0, overCaution: 0, completed: [], rank: "Trainee" },
+        o || {},
+      );
+    }
+    function fakeCal(records) {
+      const dec = records.length, cor = records.filter((r) => r.correct).length;
+      let bs = 0, bn = 0, ot = 0, oc = 0;
+      for (const r of records) {
+        if (r.predictedSafe !== undefined && r.actualSafe !== undefined) {
+          const c = Math.min(1, Math.max(0.5, r.confidence || 0.75));
+          const p = r.predictedSafe ? c : 1 - c;
+          bs += (p - (r.actualSafe ? 1 : 0)) ** 2; bn++;
+          if (r.predictedSafe && !r.actualSafe) ot++;
+          if (!r.predictedSafe && r.actualSafe) oc++;
+        }
+      }
+      return { decisions: dec, correct: cor, accuracy: dec ? cor / dec : 0, brier: bn ? bs / bn : null, overTrust: ot, overCaution: oc };
+    }
+    function buildProfile(records, id) {
+      const p = zeroProfile();
+      for (const r of records) { const a = p.areas[r.ssm]; a.attempts++; if (r.correct) a.correct++; }
+      for (const a of AREAS) { const x = p.areas[a]; x.accuracy = x.attempts ? x.correct / x.attempts : 0; x.level = x.attempts ? (x.accuracy >= 0.8 ? 3 : x.accuracy >= 0.6 ? 2 : 1) : 0; }
+      const c = fakeCal(records);
+      Object.assign(p, { totalDecisions: c.decisions, totalCorrect: c.correct, accuracy: c.accuracy, brier: c.brier, overTrust: c.overTrust, overCaution: c.overCaution, completed: [id], rank: c.accuracy >= 0.7 ? "Supervisor" : "Operator" });
+      return p;
+    }
+    window.acquireVsCodeApi = () => ({
+      postMessage(m) {
+        if (m.type === "completeScenario") {
+          window.dispatchEvent(new MessageEvent("message", {
+            data: { type: "scenarioComplete", scenarioId: m.scenarioId, calibration: fakeCal(m.records), profile: buildProfile(m.records, m.scenarioId) },
+          }));
+        }
+      },
+      getState() { return undefined; },
+      setState() {},
+    });
+  </script>
+  <script src="./data.js"></script>
+  <script src="./cockpit.js"></script>
+  <script>
+    // Shareable deep-links: #t/<trace-id> opens a trace, #s/<scenario-id> a scenario.
+    function routeFromHash() {
+      const h = location.hash.replace(/^#\/?/, "");
+      const mt = h.match(/^t\/(.+)$/), ms = h.match(/^s\/(.+)$/);
+      return { openTraceId: mt ? decodeURIComponent(mt[1]) : null, openScenarioId: ms ? decodeURIComponent(ms[1]) : null };
+    }
+    const r0 = routeFromHash();
+    window.dispatchEvent(new MessageEvent("message", {
+      data: { type: "init", scenarios: window.__SCENARIOS__, traces: window.__TRACES__, profile: zeroProfile(), openScenarioId: r0.openScenarioId, openTraceId: r0.openTraceId },
+    }));
+    window.addEventListener("hashchange", () => {
+      const r = routeFromHash();
+      if (r.openTraceId) window.dispatchEvent(new MessageEvent("message", { data: { type: "openTrace", id: r.openTraceId } }));
+      else if (r.openScenarioId) window.dispatchEvent(new MessageEvent("message", { data: { type: "openScenario", id: r.openScenarioId } }));
+    });
+  </script>
+</body>
+</html>

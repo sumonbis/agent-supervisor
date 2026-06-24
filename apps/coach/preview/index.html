@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgentSafe Coach — Preview</title>
+  <link rel="stylesheet" href="./preview.css" />
+  <link rel="stylesheet" href="../media/dashboard.css" />
+</head>
+<body>
+  <div id="app" class="app"></div>
+  <script>
+    // Real report produced by analyzing the example repo (TeamFlow-Lite).
+    window.acquireVsCodeApi = () => ({ postMessage() {}, getState() { return undefined; }, setState() {} });
+    const REPORT = {
+      repoId: "TeamFlow-Lite", totalCommits: 1, implFileCount: 1, testFileCount: 0, hasCi: false,
+      scores: { S1: -1, S2: -1, S3: 0, S4: -1, S5: -1, S6: 0 },
+      overall: 0, overallLabel: "Absent",
+      areas: {
+        S1: { area: "S1", score: -1, reasoning: "Needs an LLM pass (not yet computed)." },
+        S2: { area: "S2", score: -1, reasoning: "Needs an LLM pass (not yet computed)." },
+        S3: { area: "S3", score: 0, reasoning: "No test files found in the repository.", detail: { hasTests: false, testRatio: 0 } },
+        S4: { area: "S4", score: -1, reasoning: "Needs an LLM pass (not yet computed)." },
+        S5: { area: "S5", score: -1, reasoning: "Needs an LLM pass (not yet computed)." },
+        S6: { area: "S6", score: 0, reasoning: "Only 1 commits — insufficient history.", detail: { totalCommits: 1, branchCount: 1, hasPrs: false } }
+      },
+      aiUsage: {
+        level: "Low", weighted: 9.5, weightedPct: 0.14,
+        explicitSignals: ["e2"], topBehavioral: ["b3"],
+        signals: {
+          e1: { key: "e1", score: 0 }, e2: { key: "e2", score: 2 }, e3: { key: "e3", score: 0 },
+          e4: { key: "e4", score: 0 }, e5: { key: "e5", score: 0 }, b1: { key: "b1", score: 0 },
+          b2: { key: "b2", score: 0 }, b3: { key: "b3", score: 3 }, b4: { key: "b4", score: 0 },
+          b5: { key: "b5", score: 0 }, b6: { key: "b6", score: 0 }, b7: { key: "b7", score: 0 },
+          t1: { key: "t1", score: 0 }, t2: { key: "t2", score: 0 }
+        }
+      }
+    };
+  </script>
+  <script src="../media/dashboard.js"></script>
+  <script>
+    window.dispatchEvent(new MessageEvent("message", { data: { type: "report", report: REPORT } }));
+  </script>
+</body>
+</html>

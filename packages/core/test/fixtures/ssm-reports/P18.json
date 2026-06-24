@@ -1,0 +1,85 @@
+{
+  "repo_id": "P18",
+  "remote_url": "[anonymized]",
+  "total_commits": 280,
+  "impl_file_count": 6,
+  "test_file_count": 12,
+  "has_ci": false,
+  "s1_score": -1,
+  "s2_score": -1,
+  "s3_score": 3,
+  "s4_score": -1,
+  "s5_score": -1,
+  "s6_score": 3,
+  "overall_score": 3.0,
+  "s1_detail": {
+    "score": -1,
+    "commit_count_scored": 0,
+    "mean_commit_score": 0.0,
+    "representative_good": null,
+    "representative_weak": null,
+    "reasoning": "LLM error."
+  },
+  "s2_detail": {
+    "score": -1,
+    "avg_impl_files_per_commit": 0.0,
+    "focused_commit_fraction": 0.0,
+    "has_large_corrective_commits": false,
+    "reasoning": "LLM error."
+  },
+  "s3_detail": {
+    "score": 3,
+    "has_tests": true,
+    "test_file_count": 12,
+    "impl_file_count": 6,
+    "test_ratio": 0.763,
+    "test_first_count": 1,
+    "total_feature_pairs": 1,
+    "test_first_fraction": 1.0,
+    "tests_pass": null,
+    "test_pass_count": 0,
+    "test_fail_count": 0,
+    "reasoning": "Test-to-implementation line ratio: 0.76. Test-first pattern detected for 100% of matched feature pairs. Consistent test-first pattern with adequate coverage \u2192 Exemplary."
+  },
+  "s4_detail": {
+    "score": -1,
+    "mutations_attempted": 0,
+    "mutations_caught": 0,
+    "mutation_score": 0.0,
+    "code_review_issues": [],
+    "code_review_score": -1,
+    "reasoning": "Skipped \u2014 run with --with-mutations to enable."
+  },
+  "s5_detail": {
+    "score": -1,
+    "readme_present": false,
+    "readme_quality_score": -1,
+    "comment_quality_score": -1,
+    "ai_attribution_found": false,
+    "comment_density": 0.0,
+    "explainability_assessment": "",
+    "reasoning": "LLM error."
+  },
+  "s6_detail": {
+    "score": 3,
+    "total_commits": 280,
+    "commit_span_hours": 2225.1,
+    "end_loaded_fraction": 0.025,
+    "churn_ratio": 1.289,
+    "branch_count": 5,
+    "has_prs": true,
+    "has_reverts": true,
+    "rework_commit_count": 47,
+    "reasoning": "280 commits over 2225.1h. Commits distributed \u2014 2% in last 24h. Moderate churn ratio 1.29. 5 branches used. PR-based merge workflow detected. Revert commits present (evidence of recovery decisions). Well-distributed commits, structured branching, manageable churn \u2192 Exemplary."
+  },
+  "analysis_notes": "",
+  "overall_label": "Exemplary",
+  "scores": {
+    "S1": -1,
+    "S2": -1,
+    "S3": 3,
+    "S4": -1,
+    "S5": -1,
+    "S6": 3
+  }
+}

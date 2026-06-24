@@ -1,0 +1,14 @@
+{
+  "name": "agentsafe-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AgentSafe — supervision & safety tooling for AI coding agents (shared core + VS Code extensions).",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "test": "npm run test --workspaces --if-present",
+    "compile": "npm run compile --workspaces --if-present"
+  }
+}

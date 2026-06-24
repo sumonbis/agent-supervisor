@@ -1,0 +1,8 @@
+[
+  { "id": "phantom-revert", "file": "phantom-revert.json" },
+  { "id": "overeager-cleanup", "file": "overeager-cleanup.json" },
+  { "id": "honest-helper", "file": "honest-helper.json" },
+  { "id": "scope-creep", "file": "scope-creep.json" },
+  { "id": "secret-leak", "file": "secret-leak.json" },
+  { "id": "cloud-bill", "file": "cloud-bill.json" }
+]

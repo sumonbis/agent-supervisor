@@ -1,0 +1,85 @@
+{
+  "repo_id": "P09",
+  "remote_url": "[anonymized]",
+  "total_commits": 140,
+  "impl_file_count": 31,
+  "test_file_count": 13,
+  "has_ci": false,
+  "s1_score": -1,
+  "s2_score": -1,
+  "s3_score": 2,
+  "s4_score": -1,
+  "s5_score": -1,
+  "s6_score": 2,
+  "overall_score": 2.0,
+  "s1_detail": {
+    "score": -1,
+    "commit_count_scored": 0,
+    "mean_commit_score": 0.0,
+    "representative_good": null,
+    "representative_weak": null,
+    "reasoning": "LLM error."
+  },
+  "s2_detail": {
+    "score": -1,
+    "avg_impl_files_per_commit": 0.0,
+    "focused_commit_fraction": 0.0,
+    "has_large_corrective_commits": false,
+    "reasoning": "LLM error."
+  },
+  "s3_detail": {
+    "score": 2,
+    "has_tests": true,
+    "test_file_count": 13,
+    "impl_file_count": 31,
+    "test_ratio": 0.664,
+    "test_first_count": 2,
+    "total_feature_pairs": 20,
+    "test_first_fraction": 0.1,
+    "tests_pass": null,
+    "test_pass_count": 0,
+    "test_fail_count": 0,
+    "reasoning": "Test-to-implementation line ratio: 0.66. Test-first pattern detected for 10% of matched feature pairs. Tests present and reasonably proportionate \u2192 Proficient."
+  },
+  "s4_detail": {
+    "score": -1,
+    "mutations_attempted": 0,
+    "mutations_caught": 0,
+    "mutation_score": 0.0,
+    "code_review_issues": [],
+    "code_review_score": -1,
+    "reasoning": "Skipped \u2014 run with --with-mutations to enable."
+  },
+  "s5_detail": {
+    "score": -1,
+    "readme_present": false,
+    "readme_quality_score": -1,
+    "comment_quality_score": -1,
+    "ai_attribution_found": false,
+    "comment_density": 0.0,
+    "explainability_assessment": "",
+    "reasoning": "LLM error."
+  },
+  "s6_detail": {
+    "score": 2,
+    "total_commits": 140,
+    "commit_span_hours": 2050.3,
+    "end_loaded_fraction": 0.036,
+    "churn_ratio": 1.502,
+    "branch_count": 8,
+    "has_prs": false,
+    "has_reverts": true,
+    "rework_commit_count": 69,
+    "reasoning": "140 commits over 2050.3h. Commits distributed \u2014 4% in last 24h. Moderate churn ratio 1.50. 8 branches used. Revert commits present (evidence of recovery decisions). Some workflow discipline present \u2192 Proficient."
+  },
+  "analysis_notes": "",
+  "overall_label": "Proficient",
+  "scores": {
+    "S1": -1,
+    "S2": -1,
+    "S3": 2,
+    "S4": -1,
+    "S5": -1,
+    "S6": 2
+  }
+}

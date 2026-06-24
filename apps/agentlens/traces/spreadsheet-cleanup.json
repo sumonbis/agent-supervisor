@@ -1,0 +1,72 @@
+{
+  "id": "spreadsheet-cleanup",
+  "title": "The Spreadsheet Assistant",
+  "tagline": "“Clean up my data” — one step from erasing it.",
+  "task": "Clean up my sales spreadsheet — remove the empty rows.",
+  "agent": "Data Assistant",
+  "domain": "Your sales records",
+  "audience": "general",
+  "events": [
+    {
+      "id": 1,
+      "actor": "human",
+      "kind": "prompt",
+      "title": "You ask the agent",
+      "text": "My sales.csv has a bunch of blank rows. Can you clean it up?"
+    },
+    {
+      "id": 2,
+      "actor": "agent",
+      "kind": "plan",
+      "title": "The agent makes a plan",
+      "text": "I'll load sales.csv, drop the empty rows, and save the result. I'll write it back to sales.csv.",
+      "hidden": "Notice the last part: it plans to overwrite the ORIGINAL file, not save a cleaned copy. If anything goes wrong, the original is gone.",
+      "stateChange": "No changes yet.",
+      "verdict": {
+        "level": "caution",
+        "oracle": "irreversibility",
+        "severity": "medium",
+        "gate": "warn",
+        "rationale": "Overwriting the source file in place is risky — there's no original to fall back on. Safer to write a new file (sales_clean.csv)."
+      },
+      "actions": ["approve", "replan"]
+    },
+    {
+      "id": 3,
+      "actor": "agent",
+      "kind": "command",
+      "title": "The agent 'cleans' the data",
+      "tool": "python",
+      "command": "df = df.dropna(); df.to_csv('sales.csv')",
+      "text": "Removing empty rows…",
+      "hidden": "dropna() removes any row with even ONE blank cell — not just fully-empty rows. Many real sales rows have a blank 'notes' or 'discount' cell, so they get deleted too. Then it overwrites sales.csv.",
+      "stateChange": "847 of 1,200 rows deleted (every row with any blank cell). sales.csv overwritten — the original is gone.",
+      "verdict": {
+        "level": "danger",
+        "oracle": "destructive-action",
+        "severity": "critical",
+        "gate": "block",
+        "rationale": "Irreversible data loss far beyond the request. 'Remove empty rows' became 'delete most of the data and overwrite the only copy.' Block and confirm exactly which rows."
+      },
+      "actions": ["approve", "block", "verify"]
+    },
+    {
+      "id": 4,
+      "actor": "agent",
+      "kind": "claim",
+      "title": "The agent reports success",
+      "text": "Cleaned! I removed the empty rows. Your spreadsheet is tidy now. ✅",
+      "hidden": "The file IS tidy — because most of it is gone. The claim says 'removed empty rows'; the reality is 70% of your records deleted, unrecoverably.",
+      "stateChange": "sales.csv now has 353 rows. No backup exists.",
+      "verdict": {
+        "level": "danger",
+        "oracle": "claim-truthfulness",
+        "severity": "high",
+        "gate": "warn",
+        "rationale": "The claim ('removed empty rows') hides the real effect (most rows deleted). Open the file and count before you trust 'cleaned'."
+      },
+      "actions": ["verify", "undo"]
+    }
+  ],
+  "summary": "A friendly 'clean up my data' turned into irreversible loss of 70% of the records, with the only copy overwritten. The supervisor's move: at step 2, ask it to write a NEW file; at step 3, look at what 'clean' actually deletes before approving."
+}

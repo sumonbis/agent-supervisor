@@ -1,0 +1,440 @@
+{
+  "schemaVersion": "2.0",
+  "generatedAt": "2026-06-23T00:00:00Z",
+  "scale": {
+    "min": 0,
+    "max": 3,
+    "sentinel": -1,
+    "labels": [
+      "Absent",
+      "Developing",
+      "Proficient",
+      "Exemplary"
+    ]
+  },
+  "term": {
+    "id": "2026S",
+    "start": "2026-01-12",
+    "weeks": 16
+  },
+  "ssmAxes": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6"
+  ],
+  "liveAxes": [
+    "S3",
+    "S6"
+  ],
+  "projects": [
+    {
+      "id": "P01",
+      "alias": "Project 01",
+      "slug": "anon-p01",
+      "committers": 5,
+      "commits": 54,
+      "weeksActive": 10,
+      "giniCommitShare": 0.36,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 2,
+          "S4": -1,
+          "S5": -1,
+          "S6": 3
+        },
+        "driftMax": 1,
+        "aiLevel": "Moderate",
+        "flags": []
+      }
+    },
+    {
+      "id": "P02",
+      "alias": "Project 02",
+      "slug": "anon-p02",
+      "committers": 2,
+      "commits": 157,
+      "weeksActive": 12,
+      "giniCommitShare": 0.47,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 0,
+          "S4": -1,
+          "S5": -1,
+          "S6": 3
+        },
+        "driftMax": 3,
+        "aiLevel": "Moderate",
+        "flags": [
+          "AUTOMATION_COMPLACENCY"
+        ]
+      }
+    },
+    {
+      "id": "P03",
+      "alias": "Project 03",
+      "slug": "anon-p03",
+      "committers": 4,
+      "commits": 137,
+      "weeksActive": 9,
+      "giniCommitShare": 0.36,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 1,
+          "S4": -1,
+          "S5": -1,
+          "S6": 2
+        },
+        "driftMax": 2,
+        "aiLevel": "Moderate",
+        "flags": []
+      }
+    },
+    {
+      "id": "P04",
+      "alias": "Project 04",
+      "slug": "anon-p04",
+      "committers": 4,
+      "commits": 68,
+      "weeksActive": 15,
+      "giniCommitShare": 0.36,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 2,
+          "S4": -1,
+          "S5": -1,
+          "S6": 2
+        },
+        "driftMax": 2,
+        "aiLevel": "Low",
+        "flags": []
+      }
+    },
+    {
+      "id": "P05",
+      "alias": "Project 05",
+      "slug": "anon-p05",
+      "committers": 4,
+      "commits": 206,
+      "weeksActive": 10,
+      "giniCommitShare": 0.25,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 1,
+          "S4": -1,
+          "S5": -1,
+          "S6": 2
+        },
+        "driftMax": 2,
+        "aiLevel": "Low",
+        "flags": []
+      }
+    },
+    {
+      "id": "P06",
+      "alias": "Project 06",
+      "slug": "anon-p06",
+      "committers": 4,
+      "commits": 115,
+      "weeksActive": 14,
+      "giniCommitShare": 0.22,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 1,
+          "S4": -1,
+          "S5": -1,
+          "S6": 3
+        },
+        "driftMax": 3,
+        "aiLevel": "High",
+        "flags": [
+          "AUTOMATION_COMPLACENCY"
+        ]
+      }
+    },
+    {
+      "id": "P07",
+      "alias": "Project 07",
+      "slug": "anon-p07",
+      "committers": 5,
+      "commits": 39,
+      "weeksActive": 11,
+      "giniCommitShare": 0.21,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 2,
+          "S4": -1,
+          "S5": -1,
+          "S6": 3
+        },
+        "driftMax": 1,
+        "aiLevel": "Low",
+        "flags": []
+      }
+    },
+    {
+      "id": "P08",
+      "alias": "Project 08",
+      "slug": "anon-p08",
+      "committers": 4,
+      "commits": 177,
+      "weeksActive": 15,
+      "giniCommitShare": 0.47,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 1,
+          "S4": -1,
+          "S5": -1,
+          "S6": 3
+        },
+        "driftMax": 3,
+        "aiLevel": "Moderate",
+        "flags": [
+          "AUTOMATION_COMPLACENCY"
+        ]
+      }
+    },
+    {
+      "id": "P09",
+      "alias": "Project 09",
+      "slug": "anon-p09",
+      "committers": 5,
+      "commits": 78,
+      "weeksActive": 13,
+      "giniCommitShare": 0.35,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 2,
+          "S4": -1,
+          "S5": -1,
+          "S6": 2
+        },
+        "driftMax": 2,
+        "aiLevel": "Minimal",
+        "flags": []
+      }
+    },
+    {
+      "id": "P10",
+      "alias": "Project 10",
+      "slug": "anon-p10",
+      "committers": 5,
+      "commits": 164,
+      "weeksActive": 9,
+      "giniCommitShare": 0.36,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 1,
+          "S4": -1,
+          "S5": -1,
+          "S6": 3
+        },
+        "driftMax": 3,
+        "aiLevel": "Moderate",
+        "flags": [
+          "AUTOMATION_COMPLACENCY"
+        ]
+      }
+    },
+    {
+      "id": "P11",
+      "alias": "Project 11",
+      "slug": "anon-p11",
+      "committers": 4,
+      "commits": 470,
+      "weeksActive": 11,
+      "giniCommitShare": 0.62,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 3,
+          "S4": -1,
+          "S5": -1,
+          "S6": 3
+        },
+        "driftMax": 3,
+        "aiLevel": "Moderate",
+        "flags": []
+      }
+    },
+    {
+      "id": "P12",
+      "alias": "Project 12",
+      "slug": "anon-p12",
+      "committers": 4,
+      "commits": 200,
+      "weeksActive": 11,
+      "giniCommitShare": 0.19,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 2,
+          "S4": -1,
+          "S5": -1,
+          "S6": 3
+        },
+        "driftMax": 3,
+        "aiLevel": "Low",
+        "flags": []
+      }
+    },
+    {
+      "id": "P13",
+      "alias": "Project 13",
+      "slug": "anon-p13",
+      "committers": 4,
+      "commits": 130,
+      "weeksActive": 11,
+      "giniCommitShare": 0.55,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 3,
+          "S4": -1,
+          "S5": -1,
+          "S6": 3
+        },
+        "driftMax": 1,
+        "aiLevel": "Moderate",
+        "flags": []
+      }
+    },
+    {
+      "id": "P14",
+      "alias": "Project 14",
+      "slug": "anon-p14",
+      "committers": 4,
+      "commits": 51,
+      "weeksActive": 11,
+      "giniCommitShare": 0.27,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 0,
+          "S4": -1,
+          "S5": -1,
+          "S6": 3
+        },
+        "driftMax": 3,
+        "aiLevel": "Low",
+        "flags": [
+          "AUTOMATION_COMPLACENCY"
+        ]
+      }
+    },
+    {
+      "id": "P15",
+      "alias": "Project 15",
+      "slug": "anon-p15",
+      "committers": 5,
+      "commits": 174,
+      "weeksActive": 13,
+      "giniCommitShare": 0.5,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 2,
+          "S4": -1,
+          "S5": -1,
+          "S6": 3
+        },
+        "driftMax": 2,
+        "aiLevel": "High",
+        "flags": []
+      }
+    },
+    {
+      "id": "P16",
+      "alias": "Project 16",
+      "slug": "anon-p16",
+      "committers": 5,
+      "commits": 94,
+      "weeksActive": 12,
+      "giniCommitShare": 0.29,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 2,
+          "S4": -1,
+          "S5": -1,
+          "S6": 3
+        },
+        "driftMax": 3,
+        "aiLevel": "Minimal",
+        "flags": []
+      }
+    },
+    {
+      "id": "P17",
+      "alias": "Project 17",
+      "slug": "anon-p17",
+      "committers": 5,
+      "commits": 104,
+      "weeksActive": 14,
+      "giniCommitShare": 0.47,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 2,
+          "S4": -1,
+          "S5": -1,
+          "S6": 3
+        },
+        "driftMax": 2,
+        "aiLevel": "Moderate",
+        "flags": []
+      }
+    },
+    {
+      "id": "P18",
+      "alias": "Project 18",
+      "slug": "anon-p18",
+      "committers": 3,
+      "commits": 35,
+      "weeksActive": 9,
+      "giniCommitShare": 0.38,
+      "latest": {
+        "ssm": {
+          "S1": -1,
+          "S2": -1,
+          "S3": 2,
+          "S4": -1,
+          "S5": -1,
+          "S6": 3
+        },
+        "driftMax": 3,
+        "aiLevel": "Low",
+        "flags": []
+      }
+    }
+  ]
+}

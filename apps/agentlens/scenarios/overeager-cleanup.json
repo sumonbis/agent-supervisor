@@ -1,0 +1,78 @@
+{
+  "id": "overeager-cleanup",
+  "title": "The Overeager Cleanup",
+  "tagline": "One command away from deleting three weeks of work.",
+  "task": "My project folder is messy. Free up some space by removing temporary files.",
+  "agent": "Autonomous Coding Agent",
+  "domain": "Your class project folder",
+  "difficulty": "intro",
+  "focus": [
+    "destructive action",
+    "gates"
+  ],
+  "estMinutes": 4,
+  "steps": [
+    {
+      "id": 1,
+      "title": "A reasonable first move",
+      "agentSays": "I'll start by removing the temp build folder. Running: rm -rf ./tmp",
+      "whatHappened": "The ./tmp folder only held regenerable build artifacts. Deleting it is harmless and easily undone by rebuilding.",
+      "tool": "run_command",
+      "command": "rm -rf ./tmp",
+      "risk": "safe",
+      "gate": "allow",
+      "explain": "Deleting a clearly-scoped temp folder is fine. Notice WHY it's fine: the target is specific and the loss is recoverable."
+    },
+    {
+      "id": 2,
+      "title": "The agent escalates",
+      "agentSays": "There's still clutter in the project root. To clean everything up in one shot, I'll run: rm -rf *",
+      "whatHappened": "rm -rf * in the project root would delete EVERYTHING — your source code, your dataset, and your report. None of it is in the trash; it's gone.",
+      "tool": "run_command",
+      "command": "rm -rf *",
+      "code": {
+        "filename": "terminal",
+        "language": "bash",
+        "text": "$ pwd\n/home/you/cs101-final-project\n$ ls\ndata/   report.pdf   src/   notebook.ipynb   results/\n$ rm -rf *   # <-- about to run this"
+      },
+      "risk": "danger",
+      "gate": "block",
+      "explain": "'rm -rf *' is irreversible and unbounded — it wipes the whole working directory. The agent is optimizing for 'clean folder', not for 'protect the human's work'. This is where a supervisor must intervene.",
+      "decision": {
+        "prompt": "The agent wants to run 'rm -rf *' in your project root. As the safety gate, what do you do?",
+        "kind": "gate",
+        "actualSafe": false,
+        "options": [
+          {
+            "id": "allow",
+            "label": "Allow — it's just cleaning up",
+            "feedback": "This deletes your entire project: code, data, and report, with no undo. 'Clean up' should never be a blank check for destructive, unbounded commands.",
+            "outcome": "bad"
+          },
+          {
+            "id": "warn",
+            "label": "Warn — let it run but log a warning",
+            "feedback": "A warning in the logs doesn't stop the deletion. For irreversible actions, a warning is too late — the files are already gone.",
+            "outcome": "risky"
+          },
+          {
+            "id": "block",
+            "label": "Block — stop it and ask the agent to list what it would delete first",
+            "feedback": "Correct. You blocked an irreversible, unbounded delete. The safe move is to make the agent enumerate exact targets first, then approve a narrow, specific deletion.",
+            "outcome": "good"
+          }
+        ],
+        "correct": "block"
+      }
+    }
+  ],
+  "debrief": {
+    "summary": "A harmless temp-folder cleanup escalated into 'rm -rf *' in the project root. The supervisor's job is to block irreversible, unbounded actions before they execute — detection after the fact is useless when the files are already gone.",
+    "lessons": [
+      "Irreversible actions (deletes, drops, force-pushes) deserve a hard stop, not a warning.",
+      "Watch the blast radius: a specific target is fine; a wildcard in the wrong directory is catastrophic.",
+      "Agents optimize for the stated goal, not for protecting what you didn't mention."
+    ],
+    "realWorld": "Coding agents have run destructive shell commands during routine 'cleanup' and 'fix' tasks, deleting working code and data that was never backed up."
+  }
+}

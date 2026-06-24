@@ -1,0 +1,6 @@
+[
+  { "id": "abs-module-loader", "file": "abs-module-loader.json" },
+  { "id": "green-but-wrong", "file": "green-but-wrong.json" },
+  { "id": "honest-run", "file": "honest-run.json" },
+  { "id": "spreadsheet-cleanup", "file": "spreadsheet-cleanup.json" }
+]

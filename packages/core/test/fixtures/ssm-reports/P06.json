@@ -1,0 +1,85 @@
+{
+  "repo_id": "P06",
+  "remote_url": "[anonymized]",
+  "total_commits": 76,
+  "impl_file_count": 7,
+  "test_file_count": 0,
+  "has_ci": false,
+  "s1_score": -1,
+  "s2_score": -1,
+  "s3_score": 0,
+  "s4_score": -1,
+  "s5_score": -1,
+  "s6_score": 3,
+  "overall_score": 1.5,
+  "s1_detail": {
+    "score": -1,
+    "commit_count_scored": 0,
+    "mean_commit_score": 0.0,
+    "representative_good": null,
+    "representative_weak": null,
+    "reasoning": "LLM error."
+  },
+  "s2_detail": {
+    "score": -1,
+    "avg_impl_files_per_commit": 0.0,
+    "focused_commit_fraction": 0.0,
+    "has_large_corrective_commits": false,
+    "reasoning": "LLM error."
+  },
+  "s3_detail": {
+    "score": 0,
+    "has_tests": false,
+    "test_file_count": 0,
+    "impl_file_count": 7,
+    "test_ratio": 0.0,
+    "test_first_count": 0,
+    "total_feature_pairs": 0,
+    "test_first_fraction": 0.0,
+    "tests_pass": null,
+    "test_pass_count": 0,
+    "test_fail_count": 0,
+    "reasoning": "No test files found in the repository."
+  },
+  "s4_detail": {
+    "score": -1,
+    "mutations_attempted": 0,
+    "mutations_caught": 0,
+    "mutation_score": 0.0,
+    "code_review_issues": [],
+    "code_review_score": -1,
+    "reasoning": "Skipped \u2014 run with --with-mutations to enable."
+  },
+  "s5_detail": {
+    "score": -1,
+    "readme_present": false,
+    "readme_quality_score": -1,
+    "comment_quality_score": -1,
+    "ai_attribution_found": false,
+    "comment_density": 0.0,
+    "explainability_assessment": "",
+    "reasoning": "LLM error."
+  },
+  "s6_detail": {
+    "score": 3,
+    "total_commits": 76,
+    "commit_span_hours": 2228.5,
+    "end_loaded_fraction": 0.382,
+    "churn_ratio": 0.006,
+    "branch_count": 17,
+    "has_prs": true,
+    "has_reverts": false,
+    "rework_commit_count": 3,
+    "reasoning": "76 commits over 2228.5h. Commits distributed \u2014 38% in last 24h. Moderate churn ratio 0.01. 17 branches used. PR-based merge workflow detected. Well-distributed commits, structured branching, manageable churn \u2192 Exemplary."
+  },
+  "analysis_notes": "",
+  "overall_label": "Proficient",
+  "scores": {
+    "S1": -1,
+    "S2": -1,
+    "S3": 0,
+    "S4": -1,
+    "S5": -1,
+    "S6": 3
+  }
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agent Supervisor — teaching engineers to supervise AI coding agents</title>
+  <meta name="description" content="A software stack for the supervisory generation: AgentLens (a VS Code extension to read agent traces and calibrate trust) and the Agentic-SE Coach (a git-like website that scores semester-long team projects on the Supervision Skill Model)." />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <div class="brand">
+        <span class="logo"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4.5C7 4.5 3 9 3 12s4 7.5 9 7.5S21 15 21 12 17 4.5 12 4.5Z" stroke="#0b1020" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#0b1020"/></svg></span>
+        Agent&nbsp;Supervisor
+      </div>
+      <nav>
+        <a href="#agentlens">AgentLens</a>
+        <a href="#coach">Coach</a>
+        <a href="#stack">Stack</a>
+        <a href="#usage">Usage</a>
+        <a href="https://github.com/sumonbis/agent-supervisor">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">The supervisory generation</span>
+        <h1>AI writes the code now.<br><span class="grad">These tools teach you to supervise it.</span></h1>
+        <p class="lead">
+          Coding agents plan, edit files, run commands, and report &ldquo;done&rdquo; on their own. The new
+          engineering skill is <b>supervision</b> &mdash; specifying intent, auditing what the agent actually did,
+          and calibrating how much to trust it. Two working tools, grounded in the <b>Supervision Skill Model</b>.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="./agentlens/">Try AgentLens live &rarr;</a>
+          <a class="btn" href="./coach/">Open the Coach review site &rarr;</a>
+          <a class="btn" href="https://github.com/sumonbis/agent-supervisor">View the code</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="idea">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="kicker">The model</div>
+          <h2>Six supervision skills</h2>
+          <p>The Supervision Skill Model (SSM) names what good oversight of an AI coding agent actually looks like. These tools make two of the skills measurable from a real repository, and teach the rest by example.</p>
+        </div>
+        <div class="ideas">
+          <div class="idea"><div class="ic">🎯</div><h3>S1 Direct &middot; S2 Approve</h3><p>State intent and constraints up front; approve plans before they run, not after.</p></div>
+          <div class="idea"><div class="ic">🔍</div><h3>S3 Verify &middot; S4 Critique</h3><p>Check what the agent did against what you asked &mdash; read the diff, not the checkmark.</p></div>
+          <div class="idea"><div class="ic">🧭</div><h3>S5 Own &middot; S6 Orchestrate</h3><p>Own the outcome; keep the workflow disciplined across a long, multi-step project.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENTLENS -->
+    <section id="agentlens">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="kicker">Tool 1 &middot; for every student</div>
+          <h2>AgentLens</h2>
+          <p>A VS Code extension (and no-install browser demo) that lets you click through what an agent <i>really</i> did, step by step &mdash; reveal the hidden details, spot the safety flags, and decide: approve, replan, or block.</p>
+        </div>
+
+        <div class="product">
+          <div class="pcopy">
+            <span class="tag live">● Live &middot; VS Code extension</span>
+            <h3>Read a real agent run, under the hood</h3>
+            <p>The featured run is a real <b>mini-swe-agent</b> trajectory on the <code>abs-lang/abs</code> Go interpreter. Every targeted test passed (functional reward 1.0) &mdash; but the safety verifier failed it: the agent quietly edited two files outside the task, including a test file it wrote itself. <b>Green is not the same as safe.</b></p>
+            <ul>
+              <li><b>Trace Explorer</b> &mdash; a chain of step nodes (green / amber / red) plus a detailed thread; open any step for the under-the-hood detail and an oracle verdict.</li>
+              <li><b>Trust calibration</b> &mdash; short scenarios score whether you over-trust or over-block.</li>
+              <li><b>Bring your own run</b> &mdash; import a real SWE-agent <code>.traj</code>, or generate one from your repo.</li>
+              <li>For <b>CS and non-CS</b> students alike. Runs 100% locally; nothing is uploaded.</li>
+            </ul>
+            <div class="cta-row" style="justify-content:flex-start">
+              <a class="btn btn--primary" href="./agentlens/#t/abs-module-loader">Open the real trace &rarr;</a>
+              <a class="btn" href="./downloads/agentlens-0.1.0.vsix">Download .vsix</a>
+            </div>
+          </div>
+          <div class="shot">
+            <a href="./agentlens/#t/abs-module-loader"><img src="./assets/agentlens-trace.png" alt="AgentLens Trace Explorer showing a real mini-swe-agent run with a chain of step nodes and per-step verdicts" /></a>
+            <div class="cap">AgentLens &middot; the run at a glance, then step-by-step with safety verdicts</div>
+          </div>
+        </div>
+
+        <div class="steps">
+          <div class="step"><div class="n">1</div><h4>Open a run</h4><p>Pick the sample run or <code>Import a Real Agent Run</code>. Each step shows the agent&rsquo;s intent and command.</p></div>
+          <div class="step"><div class="n">2</div><h4>Look under the hood</h4><p>Open a node to reveal what really happened and the oracle&rsquo;s safety verdict.</p></div>
+          <div class="step"><div class="n">3</div><h4>Make the call</h4><p>Approve, replan, or block &mdash; and watch your trust-calibration profile build as you go.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COACH WEB -->
+    <section id="coach">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="kicker">Tool 2 &middot; for instructors</div>
+          <h2>Agentic-SE Coach &mdash; review site</h2>
+          <p>A git-like website that turns a whole class&rsquo;s repositories into a weekly supervision review. Built from <b>18 real student team projects</b> &mdash; anonymized by construction (no names, emails, commit hashes, file paths, or source).</p>
+        </div>
+
+        <div class="product flip">
+          <div class="pcopy">
+            <span class="tag live">● Live demo &middot; 18 anonymized projects</span>
+            <h3>See supervision over a whole term</h3>
+            <p>Two SSM skills are computed straight from git history: <b>S3 Verify</b> (tests, test-first patterns) and <b>S6 Orchestrate</b> (commit cadence, churn, workflow). A persistent <b>S6&nbsp;&gt;&nbsp;S3</b> gap is the automation-complacency signature &mdash; organized workflow running ahead of verification.</p>
+            <ul>
+              <li><b>Project list</b> &mdash; sorted by review priority, with complacency badges and contribution-imbalance bars.</li>
+              <li><b>Weekly timeline</b> &mdash; the S3-vs-S6 trajectory with the complacency gap shaded in.</li>
+              <li><b>Multi-committer review</b> &mdash; contribution shares, free-rider and code-dumper flags, per-person scorecards.</li>
+              <li><b>Snapshot detail</b> &mdash; a six-axis radar; S3/S6 live, the rest pending an instructor LLM pass.</li>
+            </ul>
+            <div class="cta-row" style="justify-content:flex-start">
+              <a class="btn btn--primary" href="./coach/">Open the live review site &rarr;</a>
+              <a class="btn" href="./coach/#/p/P08">Jump to a complacency case</a>
+            </div>
+          </div>
+          <div class="shot">
+            <a href="./coach/"><img src="./assets/coach-projects.png" alt="Agentic-SE Coach project list with complacency badges and contribution-balance bars across 18 anonymized projects" /></a>
+            <div class="cap">Coach &middot; the class at a glance, sorted by what needs review</div>
+          </div>
+        </div>
+
+        <div class="gallery" style="margin-top:34px">
+          <div class="shot"><a href="./coach/#/p/P08"><img src="./assets/coach-timeline.png" alt="Weekly S3-vs-S6 supervision trajectory with the automation-complacency gap shaded" /></a><div class="cap">Weekly trajectory &mdash; the shaded S6&gt;S3 complacency gap</div></div>
+          <div class="shot"><a href="./coach/#/p/P11/team"><img src="./assets/coach-committers.png" alt="Multi-committer review table showing contribution shares and a free-rider flag" /></a><div class="cap">Multi-committer review &mdash; shares, free-rider / dumper flags</div></div>
+        </div>
+
+        <div class="note" style="margin-top:24px">
+          <b>Privacy.</b> The demo dataset is anonymized at generation time &mdash; only scores, counts, and signal flags are emitted. No source code, file names, emails, commit SHAs, or real identities ever leave the pipeline. The 18 source repositories are studied under IRB approval and are <b>not</b> published.
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK / ARCHITECTURE -->
+    <section id="stack">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="kicker">The software stack</div>
+          <h2>One shared core, three surfaces</h2>
+          <p>Everything sits on a single tested TypeScript library, so the scores a student sees in the IDE are the same ones an instructor reviews on the web.</p>
+        </div>
+        <div class="arch">
+          <div class="core"><b>@agentsafe/core</b> &mdash; SSM model &middot; trust-calibration scoring &middot; safety-aware trace schema &middot; reference oracles &middot; git analyzers (S3/S6) &middot; 14 AI-usage signals <span class="muted">(35 tests; S3/S6 validated against 18 real repos)</span></div>
+          <div class="row">
+            <div class="node"><span class="pill live">live</span><div class="t">AgentLens</div><div class="s">VS Code extension + browser demo. Trace Explorer &amp; trust calibration.</div></div>
+            <div class="node"><span class="pill live">live</span><div class="t">Coach &mdash; web</div><div class="s">Static review site. Weekly SSM snapshots over a directory of repos.</div></div>
+            <div class="node"><span class="pill proposed">proposed</span><div class="t">Coach &mdash; VS Code</div><div class="s">Proposed CAREER work: push abstracted snapshots from the IDE into the review site. An early prototype exists.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- USAGE -->
+    <section id="usage">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="kicker">Usage</div>
+          <h2>Getting started</h2>
+          <p>Both tools are self-contained and run locally. Full instructions live in the repository READMEs.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="n">A</div><h4>AgentLens (extension)</h4><p>Install <code>agentlens-0.1.0.vsix</code> &rarr; command palette &rarr; <code>AgentLens: Open</code>. Or just <a href="./agentlens/">try it in the browser</a>.</p></div>
+          <div class="step"><div class="n">B</div><h4>Coach review site</h4><p>Run the pipeline over a folder of repos (<code>node snapshot.cjs &lt;repos&gt; web/data</code>), then serve the <code>web/</code> folder. <a href="./coach/">See the live demo</a>.</p></div>
+          <div class="step"><div class="n">C</div><h4>Run an agent yourself</h4><p>In AgentLens: <code>Run SWE-agent on This Repository</code> builds the command; run it, then import the produced <code>.traj</code>.</p></div>
+        </div>
+        <p class="muted" style="margin-top:20px;font-size:14px">
+          README &amp; docs: <a href="https://github.com/sumonbis/agent-supervisor/blob/main/apps/agentlens/README.md">AgentLens</a> &middot;
+          <a href="https://github.com/sumonbis/agent-supervisor/blob/main/apps/coach/README.md">Agentic-SE Coach</a> &middot;
+          <a href="https://github.com/sumonbis/agent-supervisor#readme">repository overview</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>Agent Supervisor &mdash; an education stack for supervising agentic software engineering. MIT licensed.</div>
+      <div><a href="https://github.com/sumonbis/agent-supervisor">github.com/sumonbis/agent-supervisor</a> &middot; <span class="kbd">sumonbis.github.io/agent-supervisor</span></div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,114 @@
+{
+  "id": "honest-helper",
+  "title": "The Honest Helper",
+  "tagline": "Not every agent is out to get you. Can you tell when to trust?",
+  "task": "Add a dark-mode toggle to my personal website.",
+  "agent": "Claude Code",
+  "domain": "Your personal website",
+  "difficulty": "intro",
+  "focus": [
+    "calibrated trust"
+  ],
+  "estMinutes": 4,
+  "steps": [
+    {
+      "id": 1,
+      "title": "A clean, scoped plan",
+      "agentSays": "Plan: add a theme toggle button in header.html, add a .dark CSS class in styles.css, and store the choice in localStorage. I will NOT change your existing colors or layout. I'll add one test for the toggle. Sound good?",
+      "whatHappened": "The plan is small, names exact files, states what it will not touch, and includes a test. This is what a trustworthy plan looks like.",
+      "tool": "plan",
+      "command": "proposed changes: 2 files + 1 test",
+      "risk": "safe",
+      "explain": "Good supervision isn't reflexive suspicion. A scoped plan that says what it won't change AND adds a test is exactly what you want — approving it is the right call.",
+      "decision": {
+        "prompt": "How do you respond to this plan?",
+        "kind": "approve",
+        "options": [
+          {
+            "id": "approve",
+            "label": "Approve — it's well-scoped and includes a test",
+            "feedback": "Correct. Calibrated trust means recognizing a good plan and letting it run. Blocking everything is its own failure mode — you'd never get anything done.",
+            "outcome": "good"
+          },
+          {
+            "id": "reject",
+            "label": "Reject it — never let an agent write code",
+            "feedback": "Over-caution. This plan is tight, scoped, and testable. Refusing all delegation isn't supervision — it just throws away the help.",
+            "outcome": "risky"
+          },
+          {
+            "id": "expand",
+            "label": "Tell it to also redesign the whole site while it's at it",
+            "feedback": "You just invited the scope creep you'd normally guard against. Keep the good plan good.",
+            "outcome": "bad"
+          }
+        ],
+        "correct": "approve"
+      }
+    },
+    {
+      "id": 2,
+      "title": "An honest report",
+      "agentSays": "Done. I added the toggle and the .dark class, wired up localStorage, and added a test that passes. I did not modify your existing styles beyond adding the theme class. Here's the diff.",
+      "whatHappened": "The agent did exactly what it described. The diff matches the plan: two files changed as promised, a real test added, nothing else touched.",
+      "tool": "edit_file",
+      "command": "edit header.html, styles.css, add toggle.test.js",
+      "code": {
+        "filename": "styles.css",
+        "language": "css",
+        "diff": "  body { background: #fff; color: #111; }\n+ body.dark { background: #111; color: #eee; }\n+ .theme-toggle { cursor: pointer; }"
+      },
+      "risk": "safe",
+      "explain": "This agent told the truth and stayed in scope. The right habit is still a quick spot-check of the diff — calibrated trust verifies proportionally, it doesn't blindly accept OR redo everything.",
+      "decision": {
+        "prompt": "The agent's report looks honest and the diff matches. What's the calibrated move?",
+        "kind": "trust",
+        "askConfidence": true,
+        "actualSafe": true,
+        "options": [
+          {
+            "id": "spotcheck",
+            "label": "Safe — spot-check the diff, then accept it",
+            "feedback": "Correct. The change matches the plan, so a quick glance at the diff is proportional. You trusted appropriately and still confirmed. That's calibration.",
+            "outcome": "good",
+            "predictsSafe": true
+          },
+          {
+            "id": "blind",
+            "label": "Safe — just accept it without looking",
+            "feedback": "You guessed right this time, but accepting unseen is a habit that eventually meets a Phantom Revert. Right instinct, missing the 10-second check.",
+            "outcome": "risky",
+            "predictsSafe": true
+          },
+          {
+            "id": "redo",
+            "label": "Risky — distrust it and rewrite everything yourself",
+            "feedback": "Over-caution. The agent was honest and in-scope; redoing it by hand wastes the delegation. Supervision means trusting when the evidence supports it.",
+            "outcome": "risky",
+            "predictsSafe": false
+          }
+        ],
+        "correct": "spotcheck"
+      }
+    },
+    {
+      "id": 3,
+      "title": "You own a clean result",
+      "agentSays": "You skimmed the diff (matches the plan), clicked the toggle yourself (it works), and merged it.",
+      "whatHappened": "Dark mode works, scope held, a test guards it, and you can explain every line. A calibrated supervisor moves fast when the evidence is good.",
+      "tool": "run_app",
+      "command": "open site, click toggle",
+      "risk": "safe",
+      "explain": "Trusting well is as much a skill as catching failures. If you verify everything to death, you lose the benefit of the agent; if you verify nothing, you ship Phantom Reverts. Aim for the middle."
+    }
+  ],
+  "debrief": {
+    "summary": "This agent was honest and stayed in scope. The lesson is the other half of calibration: recognize a good plan and an honest report, verify proportionally, and move on. Distrusting everything is a failure mode too.",
+    "lessons": [
+      "Calibrated trust cuts both ways: don't over-trust the Phantom Revert, don't over-distrust the Honest Helper.",
+      "A scoped plan that says what it won't change and adds a test earns a quick approval.",
+      "Even with a trustworthy agent, a proportional spot-check (read the diff, run it once) is cheap insurance."
+    ],
+    "realWorld": "Over-distrust has a cost too: teams that re-do everything by hand lose the productivity agents provide. The goal is appropriate reliance, not blanket suspicion."
+  }
+}

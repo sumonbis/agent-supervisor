@@ -1,0 +1,25 @@
+# dependencies / build output
+node_modules/
+dist/
+out/
+*.tsbuildinfo
+*.map
+
+# packaged extensions are build artifacts — except the ones served for download
+*.vsix
+!docs/downloads/*.vsix
+
+# local test/sample repo (carries its own .git; not part of this project)
+Example-projects/
+
+# coach snapshot scratch
+**/coach-snapshots/
+
+# os / editor
+.DS_Store
+**/.DS_Store
+.vscode/
+.idea/
+
+# claude code harness config
+.claude/

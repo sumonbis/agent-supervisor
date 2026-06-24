@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentic-SE Coach</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#/">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10V5z"/></svg>
+      </span>
+      <span class="brand-text"><strong>Agentic-SE Coach</strong><span class="brand-sub">supervision review for team agentic-SE projects</span></span>
+    </a>
+    <nav id="crumbs" class="crumbs"></nav>
+  </header>
+  <main id="app" class="app"><div class="loading">Loading…</div></main>
+  <footer class="foot">
+    Snapshots are git-derived and anonymized. <b>S3 (Verify)</b> and <b>S6 (Orchestrate)</b> are computed from history;
+    <b>S1/S2/S4/S5</b> are <span class="pending-dot"></span>pending an LLM pass. Signals are evidence to discuss, not a grade.
+  </footer>
+  <script src="./app.js"></script>
+</body>
+</html>

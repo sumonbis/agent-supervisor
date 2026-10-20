@@ -19,7 +19,7 @@ The featured AgentLens example is a **real `mini-swe-agent` run** on the `abs-la
 
 ## The Coach demo dataset & privacy
 
-The Coach review site is generated from **18 real student team projects**, studied under **IRB approval**. The published dataset is **anonymized at generation time** — only scores, counts, and signal flags are emitted (Committer A / Project NN). **No source code, file paths, emails, commit SHAs, or real identities are ever published**, and the source repositories themselves are not included in this repo.
+The Coach review site is generated from **18 real student team projects**. The published dataset is **anonymized at generation time** — only scores, counts, and signal flags are emitted (Committer A / Project NN). **No source code, file paths, emails, commit SHAs, or real identities are ever published**, and the source repositories themselves are not included in this repo.
 
 ## Repository layout
 
